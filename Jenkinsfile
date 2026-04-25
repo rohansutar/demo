@@ -4,6 +4,11 @@ pipeline {
         maven 'Maven_3_9'
         jdk 'JDK17'
     }
+    environment {
+        DB_URL = 'jdbc:h2:mem:testdb'
+        DB_USER = 'sa'
+        DB_PASSWORD = ''
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -17,7 +22,7 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                sh 'mvn test'
+                sh 'mvn test -Dspring.profiles.active=local'
             }
         }
     }
