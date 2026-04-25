@@ -7,7 +7,7 @@ pipeline {
     environment {
         DB_URL = 'jdbc:h2:mem:testdb'
         DB_USER = 'sa'
-        DB_PASSWORD = ''
+        DB_PASSWORD = credentials('db-password')
     }
     stages {
         stage('Checkout') {
